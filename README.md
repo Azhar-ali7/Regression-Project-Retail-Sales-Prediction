@@ -1,34 +1,57 @@
-Rossmann operates over 3,000 drug stores in 7 European countries. Currently, 
-Rossmann stores managers are tasked with predicting their daily sales for up to six 
-weeks in advance. Store sales are influenced by many factors, including promotions, 
-competition, school and state holidays, seasonality and locality. With thousands of 
-individual managers predicting sales based on their unique circumstances, the 
-accuracy of the results can be varied.
-The problem statement was to forecast the “Sales” column for the test data. For the 
-purpose we are provided with historical sales data for 1,115 Rossmann stores. We 
-provided two datasets i. Rossmann Stores Data.csv – gives historical data including 
-sales and ii. Store.csv – supplement information about the stores.
-The first step in the analysis involved understanding the data, exploring the data,
-identifying the variables, and then performed data cleaning like removing the 
-duplicates, anomaly correction, changing datatype of columns, looking for any null
-values and tackling them, filtering records, outlier detections and ways to dealing 
-them. For the purpose, we import necessary python libraries, load the datasets, and 
-used various pandas and NumPy built in functions.
-The second step involved analyzing the different numerical and categorical features
-and show the analyzed result using different visualization charts like bar graph,
-clustered bar chart, box plot, pie chart, distplot, scatterplot etc. For this purpose, we 
-used data visualization libraries – seaborn and matplotlib. 
-The third step involved feature engineering – dealing with categorical variables, 
-multicollinearity, and at last after all these Data preprocessing steps we go for 
-applying the Machine Learning algorithm to build a model that will predict the sales 
-for the test data. For the purpose, we used Supervised ML models like Linear 
-Regression, Ridge, Lasso, Decision Tree and Random Forest etc. and calculated 
-evaluation metrics to check the performance.
-The Final step involved is summing up the key observations and insights developed 
-during the analysis and ML Model selection. Some key takeaways were: the relation 
-between the sales and customers is sort of linear, i.e., the sales are increasing with 
-the increasing number of customers which is obvious. Sales is more when 
-Promo/Offers are running on stores, Highest sales recorded in December due to 
-Christmas and New Year. Store with Assortment level ‘b’ has the highest sales. At 
-last, based on the evaluation metrics we select the Random Forest Hyperparameter 
-Tuned Model as it is giving the best accuracy compared to other regression models
+# **<h3 align="center">Rossmann Sales Prediction </h1>**
+<h3 align="center"> AlmaBetter Verfied Project - <a href="https://www.almabetter.com/"> AlmaBetter School </a> </h5>
+<p align="center"><img src="https://media-cdn.tripadvisor.com/media/photo-s/16/e1/ec/f7/rossmann.jpg" align="center" ALT="HTML" width="alt%"/></p>
+
+# Business Problem.
+
+Rossmann operates over 3,000 drug stores in 7 European countries. Currently, Rossmann store managers are tasked with predicting their daily sales for up to six weeks in advance. Store sales are influenced by many factors, including promotions, competition, school and state holidays, seasonality, and locality. With thousands of individual managers predicting sales based on their unique circumstances, the accuracy of results can be quite varied.
+
+# Data Description
+
+* Rossmann Stores Data.csv - historical data including Sales
+
+* store.csv - supplemental information about the stores
+
+### Columns in the dataframe:
+1. Id - an Id that represents a Store within the test set
+2. Store - a unique Id for each store
+3. Sales - the turnover for any given day (this is what you are predicting)
+4. Open - an indicator for whether the store was open: 0 = closed, 1 = open
+5. StateHoliday - indicates a state holiday. a = public holiday, b = Easter holiday, c = Christmas, 0 = None
+6. SchoolHoliday - indicates if the Store on a particular Date was affected by the closure of public schools
+7. StoreType - differentiates between 4 different store models: a, b, c, d
+8. Assortment - describes an assortment level: a = basic, b = extra, c = extended
+9. CompetitionDistance - distance in meters to the nearest competitor store
+10. CompetitionOpenSince[Month/Year] - gives the approximate year and month of the time the nearest competitor was opened
+11. Promo - indicates whether a store is running a promo on that day
+12. Promo2 - Promo2 is a continuing and consecutive promotion for some stores: 0 = store is not participating, 1 = store is participating
+13. Promo2Since[Year/Week] - describes the year and calendar week when the store started participating in Promo2
+14. PromoInterval - describes the consecutive intervals Promo2 is started, naming the months the promotion is started anew. E.g. "Feb,May,Aug,Nov" means each round starts in February, May, August, November of any given year for that store
+
+## Conclusions
+
+### On EDA
+- Stores with Assortment level ‘b’ has the highest sales.
+- Approx. 50% stores are of type ‘a’. There are very few stores 
+of type ‘b’.
+- Store type ‘b’ has the highest sales and all other store 
+types ‘a’,’c’,’d’ has nearly equal sales.
+- December records the highest monthly sales. This may be 
+due to Christmas and New Year.
+- Sales is more when promos/offers are running on stores.
+- From the sales and customer scatterplot, the relationship 
+is sort of linear ie sales is increasing with number of 
+customers increasing which is obvious.
+
+### On Model Training
+- By Looking at the evaluation metrics obtained on
+implementing different sort of regression model, we decided to
+go with the Random Forest Tuned model.The maximum R^2 was
+seen in tuned Random Forest model with the value 0.97267. It
+means our best accurate model is able to explain approx/almost
+97% of variances in the datasets.
+
+- Based on our model; Customer, store Type, Promo &
+Competition Distance are the most impactful features which are
+driving the sales more as compared to other features present in
+the dataset.
